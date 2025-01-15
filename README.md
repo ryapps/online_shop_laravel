@@ -1,6 +1,6 @@
 ## CRUD Toko Online
 
-# CRUD Produk
+### CRUD Produk
 Add Produk
 ![Add Produk](assets/add_produk.png)
 Get All Produk
@@ -12,7 +12,7 @@ Update Produk
 Delete Produk
 ![Delete Produk](assets/delete_produk.png)
 
-# CRUD Pelanggan
+### CRUD Pelanggan
 Add Pelanggan
 ![Add Pelanggan](assets/add_pelanggan.png)
 Get All Pelanggan
@@ -24,7 +24,7 @@ Update Pelanggan
 Delete Pelanggan
 ![Delete Pelanggan](assets/delete_pelanggan.png)
 
-# CRUD User
+### CRUD User
 Add User
 ![Add User](assets/add_user.png)
 Get All User
