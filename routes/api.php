@@ -32,6 +32,7 @@ Route::delete("/delete_pelanggan/{id}",[ CustomerController::class, "destroy"]);
 
 Route::post("/insert_petugas",[ PetugasController::class, "store"]);
 Route::get("/get_petugas",[ PetugasController::class, "index"]);
+Route::get("/get_petugas/{id}",[ PetugasController::class, "show"]);
 Route::put("/put_petugas/{id}",[ PetugasController::class, "update"]);
 Route::delete("/delete_petugas/{id}",[ PetugasController::class, "destroy"]);
 
