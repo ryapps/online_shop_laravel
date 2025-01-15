@@ -20,11 +20,13 @@ use App\Http\Controllers\AuthController;
 
 Route::post("/insert_produk",[ ProductController::class, "store"]);
 Route::get("/get_produk",[ ProductController::class, "index"]);
+Route::get("/get_produk/{id}",[ ProductController::class, "show"]);
 Route::put("/put_produk/{id}",[ ProductController::class, "update"]);
 Route::delete("/delete_produk/{id}",[ ProductController::class, "destroy"]);
 
 Route::post("/insert_pelanggan",[ CustomerController::class, "store"]);
 Route::get("/get_pelanggan",[ CustomerController::class, "index"]);
+Route::get("/get_pelanggan/{id}",[ CustomerController::class, "show"]);
 Route::put("/put_pelanggan/{id}",[ CustomerController::class, "update"]);
 Route::delete("/delete_pelanggan/{id}",[ CustomerController::class, "destroy"]);
 
