@@ -12,7 +12,19 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $pelanggan = Pelanggan::all();
+            return response()->json([
+                'status'=>true,
+                'message'=>'berhasil load data pelanggan',
+                'data'=>$pelanggan,
+            ]);
+        } catch(Exception $e){
+            return response()->json([
+                'status'=>false,
+                'message'=>'gagal load data pelanggan. '. $e.message(),
+            ]);
+        }
     }
 
     /**
@@ -45,17 +57,49 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        try{
+            $pelanggan = Pelanggan::where('id',$id,)->first();
+            return response()->json([
+                'status'=>true,
+                'message'=>'berhasil load data detail pelanggan',
+                'data'=>$pelanggan,
+            ]);
+        } catch(Exception $e){
+            return response()->json([
+                'status'=>false,
+                'message'=>'gagal load data detail pelanggan. '. $e.message(),
+            ]);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(),[
+           'nama'=>'required|string',
+            'alamat'=>'required|string',
+            'telp'=>'required|string'
+        ]);
+        if($validator->fails()){
+            return Response()->json($validator->errors());
+        }
+
+        $ubah = Pelanggan::where('id',$id)->update([
+            'nama'        =>$request->nama,
+            'alamat'      =>$request->alamat,
+            'telp'        =>$request->telp,
+           
+        ]);
+        if($ubah){
+            return Response()->json(['status'=>'Success']);
+        } else {
+            return Response()->json(['status'=>'Failed']);
+        }
+
     }
 
     /**
@@ -63,6 +107,11 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $hapus=Pelanggan::where('id',$id)->delete();
+        if($hapus){
+            return Response()->json(['status'=>'Success']);
+        } else {
+            return Response()->json(['status'=>'Failed']);
+        }
     }
 }
