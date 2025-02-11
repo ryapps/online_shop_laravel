@@ -1,6 +1,11 @@
 ## CRUD Toko Online
 
 ### CRUD Produk
+
+Login User
+![Add Produk](assets/login_user.png)
+Logout User
+![All Produk](assets/logout_user.png)
 Add Produk
 ![Add Produk](assets/add_produk.png)
 Get All Produk
