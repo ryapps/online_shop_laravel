@@ -36,11 +36,16 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+    'web' => [
+        'driver' => 'session', // Gunakan session driver untuk otentikasi berbasis sesi
+        'provider' => 'users',
     ],
+    'api' => [
+        'driver' => 'jwt', // Gunakan jwt driver untuk otentikasi berbasis token
+        'provider' => 'users',
+    ],
+],
+
 
     /*
     |--------------------------------------------------------------------------

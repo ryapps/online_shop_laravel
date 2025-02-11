@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,17 @@ Route::get("/get_user",[AuthController::class,"getUser"]);
 Route::get("/get_detail_user/{id}",[AuthController::class,"getDetailUser"]);
 Route::put("/update_user/{id}",[AuthController::class,"update_user"]);
 Route::delete("/delete_user/{id}",[AuthController::class,"delete_user"]);
+Route::post('/login', [AuthController::class, 'login']);
+Route::get("/logout",[AuthController::class,"logout"]);
+Route::get('/me', [AuthController::class, 'me'])->middleware('auth:api');
+
+Route::prefix('kategori')->group(function () {
+    Route::get('/', [KategoriController::class, 'index']);          // Get all categories
+    Route::get('/{id}', [KategoriController::class, 'show']);       // Get single category
+    Route::post('/', [KategoriController::class, 'store']);         // Create category
+    Route::put('/{id}', [KategoriController::class, 'update']);     // Update category
+    Route::delete('/{id}', [KategoriController::class, 'destroy']); // Delete category
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
